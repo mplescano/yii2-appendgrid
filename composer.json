@@ -1,0 +1,22 @@
+{
+  "name": "mplescano/yii2-appendgrid",
+  "description": "Appendgrid.",
+  "keywords": [
+    "jquery-ui",
+    "appendgrid"
+  ],
+  "type": "yii2-extension",
+  "license": "BSD-3-Clause",
+  "authors": [
+    {
+      "name": "Mack Paul",
+      "email": "_mplescano_@gmail.com",
+      "homepage": "_http://github.com/_mplescano_"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "mplescano\\yii\\appendgrid\\": ""
+    }
+  }
+}

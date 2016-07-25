@@ -8,7 +8,7 @@ namespace mplescano\yii\appendgrid\widgets;
  * @author mplescano
  *
  */
-class AppendGridWidget extends CJuiInputWidget {
+class AppendGridWidget extends InputWidget {
     
 	public $scriptFile=false;
 	

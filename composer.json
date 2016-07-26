@@ -14,6 +14,12 @@
       "homepage": "_http://github.com/_mplescano_"
     }
   ],
+    "minimum-stability": "stable",
+
+    "require": {
+        "yiisoft/yii2": ">=2.0.7",
+        "yiisoft/yii2-jui": ">=2.0.4"
+    },
   "autoload": {
     "psr-4": {
       "mplescano\\yii\\appendgrid\\": ""

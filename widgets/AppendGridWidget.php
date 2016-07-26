@@ -2,6 +2,9 @@
 
 namespace mplescano\yii\appendgrid\widgets;
 
+use yii\jui\InputWidget;
+use yii\base\Exception;
+
 /**
  * ex.appendgrid.1_5_0.widgets.CAppendGridWidget
  * 
@@ -10,9 +13,9 @@ namespace mplescano\yii\appendgrid\widgets;
  */
 class AppendGridWidget extends InputWidget {
     
-	public $scriptFile=false;
+	public $scriptFile = false;
 	
-	public $cssFile=false;
+	public $cssFile = false;
     
     /**
      * array(
@@ -73,13 +76,13 @@ class AppendGridWidget extends InputWidget {
         if (is_array($this->columns) && count($this->columns) > 0) {
             foreach($this->columns as &$itemColumn) {
                 if (!isset($itemColumn['name'])) {
-                    throw new CException('Missing the attribute name in the columns config');
+                    throw new Exception('Missing the attribute name in the columns config');
                 }
                 if (!isset($itemColumn['type'])) {
-                    throw new CException('Missing the attribute type in the columns config');
+                    throw new Exception('Missing the attribute type in the columns config');
                 }
                 if ($itemColumn['type'] == 'select' && !isset($itemColumn['ctrlOptions'])) {
-                    throw new CException('Missing the attribute ctrlOptions in the columns config if the type is select');
+                    throw new Exception('Missing the attribute ctrlOptions in the columns config if the type is select');
                 }
                 else if ($itemColumn['type'] == 'select' && isset($itemColumn['ctrlOptions'])) {
                     if (Utils::isArrayAssoc($itemColumn['ctrlOptions'])) {

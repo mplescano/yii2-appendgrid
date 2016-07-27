@@ -19,7 +19,7 @@
     "require": {
         "yiisoft/yii2": ">=2.0.7",
         "yiisoft/yii2-jui": ">=2.0.4",
-        "fxp/composer-asset-plugin:~1.1",
+        "fxp/composer-asset-plugin": "~1.1",
         "npm-asset/jquery.appendgrid": "1.6.2"
     },
   "autoload": {

@@ -139,7 +139,7 @@ class AppendGridWidget extends InputWidget {
         }
         
         $arrInitData = array();
-        $strClassName = $this->itemClassName;
+        $strClassName = static::modelName($this->itemClassName);
         if (is_array($arrData) && count($arrData) > 0) {
             foreach($arrData as $itemData) {
                 $arrItemInitData = array();
@@ -157,7 +157,7 @@ class AppendGridWidget extends InputWidget {
                             }
                         }
                         if ($strClassName == null) {
-                            $strClassName = modelName($itemData);
+                            $strClassName = static::modelName($itemData);
                         }
                     }
                     else if (is_array($itemData)) {
@@ -177,8 +177,8 @@ class AppendGridWidget extends InputWidget {
         }
         
         $htmlOptions = array();
-        $idContainer = $htmlOptions['id'] = $id . '_container';
-        $htmlOptions['name'] = $id . '_container';
+        $idContainer = $htmlOptions['id'] = $id/* . '_container'*/;
+        $htmlOptions['name'] = $id/* . '_container'*/;
         echo Html::tag('table', '', $htmlOptions);
         
         if (!isset($this->clientOptions['idPrefix'])) {
@@ -217,6 +217,19 @@ class AppendGridWidget extends InputWidget {
         $js = "jQuery('#{$idContainer}').appendGrid($options);";
         
         $this->getView()->registerJs($js);
+    }
+    
+    /**
+     * Generates HTML name for given model.
+     * @see CHtml::setModelNameConverter()
+     * @param CModel|string $model the data model or the model class name
+     * @return string the generated HTML name value
+     * @since 1.1.14
+     */
+    public static function modelName($model)
+    {
+        $className = is_object($model) ? get_class($model) : (string) $model;
+        return trim(str_replace('\\','_',$className),'_');
     }
 }
 
@@ -269,17 +282,4 @@ function isArrayAssoc(array $array, $strict = true)
         return ($countAssoc == count($array));
     }
     return ($countAssoc > 0);
-}
-
-/**
- * Generates HTML name for given model.
- * @see CHtml::setModelNameConverter()
- * @param CModel|string $model the data model or the model class name
- * @return string the generated HTML name value
- * @since 1.1.14
- */
-function modelName($model)
-{
-    $className = is_object($model) ? get_class($model) : (string) $model;
-    return trim(str_replace('\\','_',$className),'_');
 }

@@ -56,8 +56,8 @@ class ItemClassValidator extends Validator
 				}
 				else if (is_array($rowItem)) {
 					//error_log('is array::' . print_r($rowItem, true));
-					if ($this->itemClassName != null && isset($rowItem[$this->itemClassName])) {
-						$arrAttrs = $rowItem[$this->itemClassName];
+					if ($this->itemClassName != null && isset($rowItem[AppendGridWidget::modelName($this->itemClassName)])) {
+						$arrAttrs = $rowItem[AppendGridWidget::modelName($this->itemClassName)];
 					}
 					else {
 						$arrAttrs = $rowItem;

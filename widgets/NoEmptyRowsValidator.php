@@ -44,7 +44,7 @@ class NoEmptyRowsValidator extends Validator
 				}
 				else if (is_array($rowItem)) {
 					if ($this->itemClassName != null) {
-						$arrCols = $rowItem[$this->itemClassName];
+						$arrCols = $rowItem[AppendGridWidget::modelName($this->itemClassName)];
 					}
 					else {
 						$arrCols = $rowItem;

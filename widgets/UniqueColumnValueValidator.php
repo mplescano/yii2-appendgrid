@@ -51,11 +51,11 @@ class UniqueColumnValueValidator extends Validator
 				}
 				else if (is_array($rowItem)) {
 					//error_log('is array::' . print_r($rowItem, true));
-					if ($this->itemClassName != null && isset($rowItem[$this->itemClassName])) {
+					if ($this->itemClassName != null && isset($rowItem[AppendGridWidget::modelName($this->itemClassName)])) {
 						$valCol = '';
 						for ($indCol = 0; $indCol < count($this->columns); $indCol++) {
-							if (isset($rowItem[$this->itemClassName][$this->columns[$indCol]])) {
-								$valCol .= $rowItem[$this->itemClassName][$this->columns[$indCol]];
+							if (isset($rowItem[AppendGridWidget::modelName($this->itemClassName)][$this->columns[$indCol]])) {
+								$valCol .= $rowItem[AppendGridWidget::modelName($this->itemClassName)][$this->columns[$indCol]];
 								if ($indCol != (count($this->columns) - 1)) {
 									$valCol .= '::';
 								}

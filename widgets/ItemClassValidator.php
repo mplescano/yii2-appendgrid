@@ -2,11 +2,13 @@
 
 namespace mplescano\yii\appendgrid\widgets;
 
-class ItemClassValidator extends CValidator
+use yii\base\Model;
+use yii\validators\Validator;
+
+class ItemClassValidator extends Validator
 {
 	
 	public $itemClassName;
-	
 	
 	public $payload = array();
 	
@@ -16,7 +18,7 @@ class ItemClassValidator extends CValidator
 	 * @param CModel $object the object being validated
 	 * @param string $attribute the attribute being validated
 	 */
-	protected function validateAttribute($object, $attribute)
+	public function validateAttribute($object, $attribute)
 	{
 		$arrValue = $object->$attribute;
 	
@@ -31,7 +33,7 @@ class ItemClassValidator extends CValidator
 					//$arrCols = get_object_vars($rowItem);
 					//$valCol = $arrCols[$this->column];
 					if (get_class($rowItem) == $this->itemClassName &&
-						$rowItem instanceof CFormModel) {
+						$rowItem instanceof Model) {
 						if (is_array($this->payload) && count($this->payload) > 0 &&
 								property_exists($rowItem, 'payload')) {
 							$arrPropPayload = array();

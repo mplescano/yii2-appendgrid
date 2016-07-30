@@ -2,7 +2,9 @@
 
 namespace mplescano\yii\appendgrid\widgets;
 
-class NoEmptyRowsValidator extends CValidator
+use yii\validators\Validator;
+
+class NoEmptyRowsValidator extends Validator
 {
 	
 	public $itemClassName;
@@ -15,11 +17,11 @@ class NoEmptyRowsValidator extends CValidator
 	 * @param CModel $object the object being validated
 	 * @param string $attribute the attribute being validated
 	 */
-	protected function validateAttribute($object,$attribute)
+	public function validateAttribute($object, $attribute)
 	{
 		$arrValue = $object->$attribute;
 		
-		$label=$object->getAttributeLabel($attribute);
+		$label = $object->getAttributeLabel($attribute);
 		
 		if ($arrValue != null && is_array($arrValue) && count($arrValue) > 0) {
 			//TODO por cada item, ver si es vacio o nulo
@@ -84,7 +86,7 @@ class NoEmptyRowsValidator extends CValidator
 	 * @see CActiveForm::enableClientValidation
 	 * @since 1.1.7
 	 */
-	public function clientValidateAttribute($object,$attribute)
+	public function clientValidateAttribute($object,$attribute,$view)
 	{
 		//TODO...
 	}

@@ -2,9 +2,11 @@
 
 namespace mplescano\yii\appendgrid\widgets;
 
+use yii\validators\Validator;
+
 /**
- * 
- * TODO hacer que sea multicolumna, ver impacto en los demas, modificar acordemente 
+ *
+ * TODO hacer que sea multicolumna, ver impacto en los demas, modificar acordemente
  * @author mlescano
  *
  */
@@ -21,7 +23,7 @@ class UniqueColumnValueValidator extends Validator
 	 * @param CModel $object the object being validated
 	 * @param string $attribute the attribute being validated
 	 */
-	protected function validateAttribute($object,$attribute)
+	public function validateAttribute($object,$attribute)
 	{
 		$arrValue = $object->$attribute;
 		
@@ -104,7 +106,7 @@ class UniqueColumnValueValidator extends Validator
 	 * @see CActiveForm::enableClientValidation
 	 * @since 1.1.7
 	 */
-	public function clientValidateAttribute($object,$attribute)
+	public function clientValidateAttribute($object,$attribute,$view)
 	{
 		//TODO...
 	}

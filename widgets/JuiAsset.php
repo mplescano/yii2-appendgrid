@@ -29,5 +29,6 @@ class JuiAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\JqueryAsset',
+        'yii\bootstrap\BootstrapPluginAsset'
     ];
 }
